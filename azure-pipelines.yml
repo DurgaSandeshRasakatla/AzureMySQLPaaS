@@ -9,7 +9,7 @@ steps:
         inputs:
           provider: 'azurerm'
           command: 'init'
-          workingDirectory: 'AzureMySQLPaaS'
+          #workingDirectory: 'AzureMySQLPaaS'
           backendServiceArm: 'dbdevopscon01'
           backendAzureRmResourceGroupName: 'rg_csdb01'
           backendAzureRmStorageAccountName: 'rg_csdbstg01'
@@ -20,7 +20,7 @@ steps:
         inputs:
         provider: 'azurerm'
         command: 'plan'
-        workingDirectory: 'AzureMySQLPaaS'
+        #workingDirectory: 'AzureMySQLPaaS'
         commandOptions: '-var="password $(SQL_PASSWORD)" -var="ip_address=$(IP_ADDRESS)"'
         backendServiceArm: 'dbdevopscon01'
 
@@ -28,6 +28,6 @@ steps:
         inputs:
         provider: 'azurerm'
         command: 'apply'
-        workingDirectory: 'AzureMySQLPaaS'
+        #workingDirectory: 'AzureMySQLPaaS'
         commandOptions: '-var="password $(SQL_PASSWORD)" -var="ip_address=$(IP_ADDRESS)"'
         backendServiceArm: 'dbdevopscon01'
