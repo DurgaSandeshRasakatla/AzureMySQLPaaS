@@ -9,8 +9,7 @@ steps:
   inputs:
     command: 'init'
     backendType: 'azurerm'
-    backendServiceArm: 'dbdevopscon01'
-    backendAzureRmSubscriptionId: 'f8a53152-7fc9-4bac-b337-cacd2d85b0c8'
+    backendServiceArm: 'Jio-Azure-smbcloud(f8a53152-7fc9-4bac-b337-cacd2d85b0c8)'
     backendAzureRmResourceGroupName: 'rg_csdb01'
     backendAzureRmStorageAccountName: 'rgcsdbstg01'
     backendAzureRmContainerName: 'rgcsdbcon01'
@@ -20,14 +19,13 @@ steps:
 - task: TerraformCLI@0
   inputs:
     command: 'plan'
-    environmentServiceName: 'dbdevopscon01'
+    backendServiceArm: 'Jio-Azure-smbcloud(f8a53152-7fc9-4bac-b337-cacd2d85b0c8)'
     commandOptions: '-var="password $(SQL_PASSWORD)" -var="ip_address=$(IP_ADDRESS)"'
     allowTelemetryCollection: true
 
 - task: TerraformCLI@0
   inputs:
     command: 'apply'
-    environmentServiceName: 'dbdevopscon01'
+    backendServiceArm: 'Jio-Azure-smbcloud(f8a53152-7fc9-4bac-b337-cacd2d85b0c8)'
     commandOptions: '-var="password $(SQL_PASSWORD)" -var="ip_address=$(IP_ADDRESS)"'
     allowTelemetryCollection: true
-
