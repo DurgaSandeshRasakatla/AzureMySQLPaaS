@@ -20,12 +20,12 @@ steps:
   inputs:
     command: 'plan'
     backendServiceArm: 'Jio-Azure-smbcloud(f8a53152-7fc9-4bac-b337-cacd2d85b0c8)'
-    commandOptions: '-var="password $(SQL_PASSWORD)" -var="ip_address=$(IP_ADDRESS)"'
+    commandOptions: '-var="password=$(SQL_PASSWORD)" -var="ip_address=$(IP_ADDRESS)"'
     allowTelemetryCollection: true
 
 - task: TerraformCLI@0
   inputs:
     command: 'apply'
     backendServiceArm: 'Jio-Azure-smbcloud(f8a53152-7fc9-4bac-b337-cacd2d85b0c8)'
-    commandOptions: '-var="password $(SQL_PASSWORD)" -var="ip_address=$(IP_ADDRESS)"'
+    commandOptions: '-var="password=$(SQL_PASSWORD)" -var="ip_address=$(IP_ADDRESS)"'
     allowTelemetryCollection: true
