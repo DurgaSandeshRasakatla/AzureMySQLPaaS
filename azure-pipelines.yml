@@ -5,29 +5,29 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-      - task: TerraformTaskV1@0
-        inputs:
-          provider: 'azurerm'
-          command: 'init'
-          #workingDirectory: 'AzureMySQLPaaS'
-          backendServiceArm: 'dbdevopscon01'
-          backendAzureRmResourceGroupName: 'rg_csdb01'
-          backendAzureRmStorageAccountName: 'rg_csdbstg01'
-          backendAzureRmContainerName: 'rgcsdbcon01'
-          backendAzureRmKey: 'terraform.tfstate'
+- task: TerraformCLI@0
+  inputs:
+    command: 'init'
+    backendType: 'azurerm'
+    backendServiceArm: 'dbdevopscon01'
+    backendAzureRmSubscriptionId: 'f8a53152-7fc9-4bac-b337-cacd2d85b0c8'
+    backendAzureRmResourceGroupName: 'rg_csdb01'
+    backendAzureRmStorageAccountName: 'rgcsdbstg01'
+    backendAzureRmContainerName: 'rgcsdbcon01'
+    backendAzureRmKey: 'terraform.tfstate'
+    allowTelemetryCollection: false
 
-      - task: TerraformTaskV1@0
-        inputs:
-        provider: 'azurerm'
-        command: 'plan'
-        #workingDirectory: 'AzureMySQLPaaS'
-        commandOptions: '-var="password $(SQL_PASSWORD)" -var="ip_address=$(IP_ADDRESS)"'
-        backendServiceArm: 'dbdevopscon01'
+- task: TerraformCLI@0
+  inputs:
+    command: 'plan'
+    environmentServiceName: 'dbdevopscon01'
+    commandOptions: '-var="password $(SQL_PASSWORD)" -var="ip_address=$(IP_ADDRESS)"'
+    allowTelemetryCollection: true
 
-      - task: TerraformTaskV1@0
-        inputs:
-        provider: 'azurerm'
-        command: 'apply'
-        #workingDirectory: 'AzureMySQLPaaS'
-        commandOptions: '-var="password $(SQL_PASSWORD)" -var="ip_address=$(IP_ADDRESS)"'
-        backendServiceArm: 'dbdevopscon01'
+- task: TerraformCLI@0
+  inputs:
+    command: 'apply'
+    environmentServiceName: 'dbdevopscon01'
+    commandOptions: '-var="password $(SQL_PASSWORD)" -var="ip_address=$(IP_ADDRESS)"'
+    allowTelemetryCollection: true
+
