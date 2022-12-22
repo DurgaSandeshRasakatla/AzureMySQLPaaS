@@ -29,3 +29,11 @@ steps:
     backendServiceArm: 'Jio-Azure-smbcloud(f8a53152-7fc9-4bac-b337-cacd2d85b0c8)'
     commandOptions: '-var="password=$(SQL_PASSWORD)" -var="ip_address=$(IP_ADDRESS)"'
     allowTelemetryCollection: true
+
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'Jio-Azure-smbcloud(f8a53152-7fc9-4bac-b337-cacd2d85b0c8)'
+    scriptType: 'ps'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az login'
+    powerShellErrorActionPreference: 'continue'
