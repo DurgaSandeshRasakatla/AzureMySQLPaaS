@@ -6,16 +6,6 @@ pool:
 
 steps:
 
-
-- task: AzureCLI@2
-  inputs:
-    azureSubscription: 'Jio-Azure-smbcloud(f8a53152-7fc9-4bac-b337-cacd2d85b0c8)'
-    scriptType: 'ps'
-    scriptLocation: 'inlineScript'
-    inlineScript: 'az --version' 
-    powerShellErrorActionPreference: 'continue'
-
-
 - task: TerraformCLI@0
   inputs:
     command: 'init'
