@@ -1,9 +1,6 @@
 # To run the Terraform config on localhost with the secrets:
 # terraform plan -var-file="secrets.tfvars"
 
-provider "azurerm" {
-  features {}
-}
 
 resource "azurerm_mysql_server" "devopsdatabase" {
   name                = var.db_name
