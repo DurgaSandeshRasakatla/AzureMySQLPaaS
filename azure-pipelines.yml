@@ -12,7 +12,7 @@ steps:
     azureSubscription: 'Jio-Azure-smbcloud(f8a53152-7fc9-4bac-b337-cacd2d85b0c8)'
     scriptType: 'ps'
     scriptLocation: 'inlineScript'
-    inlineScript: 'az login'
+    inlineScript: 'az --version' 
     powerShellErrorActionPreference: 'continue'
 
 
