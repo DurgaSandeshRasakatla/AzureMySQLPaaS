@@ -7,7 +7,6 @@ pool:
 steps:
 - task: AzureCLI@2
   inputs:
-    azureSubscription: 'devopscon01'
     scriptType: 'ps'
     scriptLocation: 'inlineScript'
     inlineScript: |
